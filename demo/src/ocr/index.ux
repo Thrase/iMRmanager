@@ -1,0 +1,59 @@
+<template>
+  <div>
+    <input class="btn" type="button" value="拍照" ontouchend="take_photo" />
+  </div>
+</template>
+
+<script>
+import media from '@system.media'
+import fetch from '@system.fetch'
+export default {
+  take_photo() {
+    media.takePhoto({
+      success: function (data) {
+        console.log('take photo success!')
+        fetch.fetch({
+          url: 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=yCffU9iNxneXAN3vfuUM2eVC&client_secret=4Go0y8s1ZUOu4ylysmGKgAt0vixaT2fY',
+          success: function (data) {
+            let dict = JSON.parse(data.data)
+            let token = dict.access_token
+            console.log(token)
+            fetch.fetch({
+              url: 'https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic',
+              data: {
+                'image': '',
+              },
+              header: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              }
+            })
+          }
+        })
+      },
+      fail: function () {
+        console.log('take photo fail!')
+      }
+    })
+  }
+}
+</script>
+
+
+<style>
+.demo-page {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 300px;
+  height: 80px;
+  margin-left: 160px;
+  margin-top: 75px;
+  border-radius: 20px;
+  background-color: #77d9ff;
+  font-size: 30px;
+  color: #000000;
+}
+</style>

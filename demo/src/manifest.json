@@ -29,14 +29,17 @@
     "pages": {
       "main": {
         "component": "index"
+      },
+      "ocr": {
+        "component": "index"
       }
     },
     "widgets": {
       "card": {
-        "name": "CardDemo",
+        "name": "card",
         "description": "快应用卡片展示",
         "component": "index",
-        "path": "/CardDemo",
+        "path": "/card",
         "minPlatformVersion": 1032,
         "targetManufactorys": [
           "vivo"
@@ -53,6 +56,9 @@
       "main": {
         "titleBarText": "主界面",
         "menu": true
+      },
+      "ocr": {
+        "titleBarText": "OCR"
       }
     }
   }
