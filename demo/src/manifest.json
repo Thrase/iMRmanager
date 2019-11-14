@@ -58,7 +58,7 @@
     "pages": {
       "Demo": {
         "titleBarText": "示例页",
-        "menu": false
+        "menu": true
       },
       "DemoDetail": {
         "titleBarText": "详情页"
