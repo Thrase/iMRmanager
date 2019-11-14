@@ -1,0 +1,44 @@
+<template>
+  <div class="tab-section">
+    <text>{{itemdata.title}}</text>
+  </div>
+</template>
+
+<style>
+  .tab-section {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    margin: 10px;
+  }
+  .tab-section text {
+    color: #FF0000;
+    text-align: center;
+  }
+</style>
+
+<script>
+  export default {
+    props: [
+      'index',
+      'itemdata',
+      // 驼峰式在赋值时使用-连接
+      'currentIndex'
+    ],
+    onInit () {
+      // 监听属性变化
+      this.$watch('currentIndex', 'watchCurrentIndex')
+    },
+    /**
+     * 监听用户选择的索引，选中当前时触发业务逻辑
+     * @param newValue
+     * @param oldValue
+     */
+    watchCurrentIndex (newValue, oldValue) {
+      if (parseInt(this.index) === this.currentIndex) {
+        console.info(`当前用户选择了这个标签：${this.index}, ${newValue}, ${oldValue}`)
+      }
+    }
+  }
+</script>

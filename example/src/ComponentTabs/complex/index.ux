@@ -1,0 +1,94 @@
+<template>
+  <div class="tutorial-page">
+    <!-- 灵活使用tabs组件 -->
+    <div class="flexible-tabs">
+      <!-- 自定义tab-bar组件 -->
+      <div class="flexible-tabbar">
+        <image src="./img/user.png" onclick="routePage('personal')"></image>
+        <text class="{{currentIndex === 0 ? 'active' : ''}}" onclick="clickTabBar(0)">聊天</text>
+        <text class="{{currentIndex === 1 ?  'active' : ''}}" onclick="clickTabBar(1)">发现</text>
+        <text class="{{currentIndex === 2 ? 'active' : ''}}" onclick="clickTabBar(2)">通讯录</text>
+        <image src="./img/search.png" onclick="routePage('search')"></image>
+      </div>
+      <!-- 监听change事件，触发时动态修改tabs的index属性 -->
+      <tabs onchange="changeTabactive" index="{{currentIndex}}">
+        <tab-content class="flexible-tab-content">
+          <div class="tab-content-section">
+            <text>聊天</text>
+          </div>
+          <div class="tab-content-section">
+            <text>发现</text>
+          </div>
+          <div class="tab-content-section">
+            <text>通讯录</text>
+          </div>
+        </tab-content>
+      </tabs>
+    </div>
+  </div>
+</template>
+
+<style lang="less">
+  .tutorial-page {
+    flex: 1;
+    .flexible-tabs {
+      flex: 1;
+      flex-direction: column;
+      .flexible-tabbar {
+        height: 100px;
+        padding: 0 30px;
+        background-color: #f1f1f1;
+        align-items: center;
+        text {
+          flex-grow: 1;
+          height: 100px;
+          margin: 0 30px;
+          text-align: center;
+          border: 0px solid #f1f1f1;
+          border-bottom-width: 5px;
+        }
+        image {
+          height: 50px;
+          width: 50px;
+          resize-mode: contain;
+        }
+        .active {
+          color: #0faeff;
+          border-bottom-color: #0faeff;
+        }
+      }
+      .flexible-tab-content {
+        flex: 1;
+        .tab-content-section {
+          flex: 1;
+          background-color: #ffffff;
+          justify-content: center;
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  import router from '@system.router'
+
+  export default {
+    private: {
+      currentIndex: 0
+    },
+    onInit () {
+      this.$page.setTitleBar({ text: 'tabs仅包含tab-content' })
+    },
+    changeTabactive (evt) {
+      this.currentIndex = evt.index
+    },
+    clickTabBar (index) {
+      this.currentIndex = index
+    },
+    routePage (param) {
+      router.push({
+        uri: 'ComponentTabs/complex/' + param
+      })
+    }
+  }
+</script>

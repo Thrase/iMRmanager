@@ -1,0 +1,25 @@
+<!-- index.ux -->
+<import src="./part1"></import>
+<template>
+  <part1 class="component" header="{{header}}" footer="{{footer}}">
+    <text>slot节点内容</text>
+  </part1>
+</template>
+
+<style>
+  .component {
+    flex-direction: column;
+  }
+</style>
+
+<script>
+  export default {
+    private: {
+      header: 'HEAD',
+      footer: 'FOOT'
+    },
+    onInit () {
+      this.$page.setTitleBar({ text: '组件slot' })
+    }
+  }
+</script>

@@ -1,0 +1,139 @@
+<template>
+  <!-- 列表实现，监听列表的scrollbottom事件，列表滚动到底部时加载更多数据 -->
+  <list class="tutorial-page" onscrollbottom="renderMoreListItem">
+    <!-- 商品列表 -->
+    <block for="productList">
+      <list-item type="product" class="content-item">
+        <image class="img" src="{{$item.img}}"></image>
+        <div class="text-wrap">
+          <div class="top-line">
+            <text class="text-name">{{$item.name}}</text>
+            <text class="text-price">{{$item.price}}</text>
+          </div>
+          <text class="bottom-line">{{$item.brief}}</text>
+        </div>
+      </list-item>
+    </block>
+
+    <list-item type="loadStatus" class="load-status">
+      <progress type="circular" show="{{hasMoreData}}"></progress>
+      <text show="{{hasMoreData}}">加载更多</text>
+      <text show="{{!hasMoreData}}">没有更多了~</text>
+    </list-item>
+  </list>
+</template>
+
+<style lang="less">
+  .tutorial-page {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 30px;
+    .content-item {
+      border-color: #bbbbbb;
+      border-bottom-width: 1px;
+      .img {
+        flex-shrink: 0;
+        width: 250px;
+        height: 250px;
+        padding: 20px;
+      }
+      .text-wrap {
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 20px;
+        height: 250px;
+        justify-content: center;
+        .top-line {
+          justify-content: space-between;
+          .text-name {
+            font-size: 35px;
+          }
+          .text-price {
+            color: #ff6000;
+          }
+        }
+        .bottom-line {
+          margin-top: 30px;
+        }
+      }
+    }
+    .load-status {
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      border-color: #bbbbbb;
+      border-bottom-width: 1px;
+    }
+  }
+</style>
+
+<script>
+  import {dataComponentListLazyload} from '../../Common/js/data'
+
+  // 模拟fetch请求数据
+  function callFetch (callback) {
+    setTimeout(function () {
+      callback(dataComponentListLazyload)
+    }, 500)
+  }
+
+  // 内存中存储的列表数据
+  let memList = []
+
+  export default {
+    private: {
+      productList: [],
+      hasMoreData: true,
+      // 每次渲染的商品数
+      size: 10,
+      // 是否正在fetch请求数据
+      isLoadingData: false
+    },
+    onInit () {
+      this.$page.setTitleBar({ text: 'list-item懒加载' })
+      // 获取数据并渲染列表
+      this.loadAndRender()
+    },
+    /**
+     * 请求并渲染
+     */
+    loadAndRender (doRender = true) {
+      this.isLoadingData = true
+      // 重新请求数据并根据模式判断是否需要渲染列表
+      callFetch(function (resList) {
+        this.isLoadingData = false
+        if (!resList) {
+          console.error(`数据请求错误`)
+        }
+        else if (!resList.length) {
+          this.hasMoreData = false
+        }
+        else {
+          memList = memList.concat(resList)
+          if (doRender) {
+            this._renderList()
+          }
+        }
+      }.bind(this))
+    },
+    _renderList () {
+      // 渲染列表
+      if (memList.length > 0) {
+        const list = memList.splice(0, this.size)
+        this.productList = this.productList.concat(list)
+      }
+      if (memList.length <= this.size) {
+        // 提前请求新的数据
+        this.loadAndRender(false)
+      }
+    },
+    /**
+     * 滑动到底部时加载更多
+     */
+    renderMoreListItem () {
+      if (!this.isLoadingData) {
+        this._renderList()
+      }
+    }
+  }
+</script>

@@ -1,0 +1,37 @@
+<template>
+  <div class="tutorial-page">
+    <text onclick="toggleCityList">点击：控制是否显示城市</text>
+    <div class="city" for="city in cities" if="{{showCityList === 1}}">
+      <text>城市：{{city.name}}</text>
+      <block if="{{city.showSpots}}" for="{{city.spots}}">
+        <text>景点：{{$item.name}}</text>
+      </block>
+    </div>
+  </div>
+</template>
+
+<style lang="less">
+  .tutorial-page {
+    flex-direction: column;
+  }
+  .city {
+    flex-direction: column;
+  }
+</style>
+
+<script>
+  import {dataDirective} from '../../Common/js/data'
+
+  export default {
+    private: {
+      showCityList: 1,
+      cities: dataDirective
+    },
+    onInit () {
+      this.$page.setTitleBar({ text: '组件block' })
+    },
+    toggleCityList () {
+      this.showCityList = this.showCityList === 1 ? 0 : 1
+    }
+  }
+</script>

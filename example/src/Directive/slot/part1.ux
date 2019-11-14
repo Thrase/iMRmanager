@@ -1,0 +1,16 @@
+<!-- par1.ux -->
+<template>
+  <div>
+    <text>{{ header }}</text>
+    <slot></slot>
+    <text>{{ footer }}</text>
+  </div>
+</template>
+
+<script>
+  export default {
+    props: [
+      'header', 'footer'
+    ]
+  }
+</script>

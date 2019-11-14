@@ -1,0 +1,32 @@
+<script>
+  /**
+   * 应用级别的环境配置，不是页面级别，一般不建议对该文件改动；
+   * 你可以封装一些常用函数，暴露在下面的导出对象中给页面使用；
+   */
+
+  import './util/util'
+  import './util/regenerator'
+  import './util/testAsync'
+
+  import {
+    natives
+  } from './util/asyncNatives'
+
+  export default {
+    onCreate () {
+      console.info('Application onCreate')
+    },
+    onDestroy () {
+      console.info('Application onDestroy')
+    },
+    // 暴露给所有页面，在页面中通过：this.$app.$def.method1()访问
+    method1 () {
+      console.info('这是APP的方法')
+    },
+    // 暴露给所有页面，在页面中通过：this.$app.$def.data1访问
+    data1: {
+      name: '这是APP存的数据'
+    },
+    natives
+  }
+</script>

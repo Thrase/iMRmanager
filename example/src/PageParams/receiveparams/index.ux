@@ -1,0 +1,29 @@
+<template>
+  <div class="tutorial-page">
+    <text>page</text>
+    <!-- template中显示页面传递的参数 -->
+    <text>{{key}}</text>
+  </div>
+</template>
+
+<style>
+  .tutorial-page {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+<script>
+  export default {
+    protected: {
+      key: ''
+    },
+    onInit () {
+      this.$page.setTitleBar({ text: '接收参数' })
+
+      // js中输出页面传递的参数
+      console.info('key: ' + this.key)
+    }
+  }
+</script>

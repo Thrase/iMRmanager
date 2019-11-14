@@ -1,0 +1,54 @@
+<template>
+  <div class="tutorial-page">
+    <div>
+      <a href="/PageParams/a">组件a切换页面</a>
+      <a href="/PageParams/awithparams">组件a切换页面传递参数</a>
+      <a href="/PageParams/router">接口router切换页面</a>
+      <a href="/PageParams/routerwithparams">接口router切换页面传递参数</a>
+      <a href="/PageParams/returnParams/pagea">回传参数：页面A</a>
+    </div>
+    <div>
+      <text>--> /PageParams/a</text>
+      <text>--> /PageParams/awithparams</text>
+      <text>--> /PageParams/router</text>
+      <text>--> /PageParams/routerwithparams</text>
+      <text>--> /PageParams/returnParams/pagea</text>
+    </div>
+  </div>
+</template>
+
+<style lang="less">
+  .tutorial-page {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    div {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    a {
+      margin-top: 75px;
+      margin-left: 80px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #09ba07;
+      text-decoration: underline;
+    }
+
+    text {
+      margin-top: 75px;
+      margin-left: 30px;
+    }
+  }
+</style>
+
+<script>
+  export default {
+    onInit () {
+      this.$page.setTitleBar({ text: '页面切换及参数传递' })
+    }
+  }
+</script>

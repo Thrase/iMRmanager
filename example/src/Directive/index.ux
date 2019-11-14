@@ -1,0 +1,49 @@
+<template>
+  <div class="tutorial-page">
+    <div>
+      <a href="/Directive/for">指令for</a>
+      <a href="/Directive/ifshow">指令if与指令show</a>
+      <a href="/Directive/block">组件block</a>
+      <a href="/Directive/slot">组件slot</a>
+    </div>
+    <div>
+      <text>--> /Directive/for</text>
+      <text>--> /Directive/ifshow</text>
+      <text>--> /Directive/block</text>
+      <text>--> /Directive/slot</text>
+    </div>
+  </div>
+</template>
+
+<style lang="less">
+  .tutorial-page {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    div {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    a {
+      margin-top: 75px;
+      margin-left: 80px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #09ba07;
+      text-decoration: underline;
+    }
+    text {
+      margin-top: 75px;
+      margin-left: 30px;
+    }
+  }
+</style>
+
+<script>
+  export default {
+    onInit () {
+      this.$page.setTitleBar({ text: '框架指令' })
+    }
+  }
+</script>

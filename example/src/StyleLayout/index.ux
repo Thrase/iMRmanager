@@ -1,0 +1,52 @@
+<template>
+ <div class="tutorial-page">
+    <div>
+      <a href="/StyleLayout/style">样式示例</a>
+      <a href="/StyleLayout/less">less示例</a>
+      <a href="/StyleLayout/layout">Flex布局示例</a>
+      <a href="/StyleLayout/updatestyle">动态修改样式</a>
+    </div>
+    <div>
+      <text>--> /StyleLayout/style</text>
+      <text>--> /StyleLayout/less</text>
+      <text>--> /StyleLayout/layout</text>
+      <text>--> /StyleLayout/updatestyle</text>
+    </div>
+  </div>
+</template>
+
+<style lang="less">
+  .tutorial-page {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    div {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    a {
+      margin-top: 75px;
+      margin-left: 80px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #09ba07;
+      text-decoration: underline;
+    }
+
+    text {
+      margin-top: 75px;
+      margin-left: 30px;
+    }
+  }
+</style>
+
+<script>
+  export default {
+    onInit () {
+      this.$page.setTitleBar({ text: '页面样式与布局' })
+    }
+  }
+</script>

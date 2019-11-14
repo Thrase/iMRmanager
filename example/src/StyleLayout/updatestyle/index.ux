@@ -1,0 +1,38 @@
+<template>
+  <div style="flex-direction: column;">
+    <!-- 修改class -->
+    <text class="normal-text {{className}}" onclick="changeClassName">点击我修改文字颜色</text>
+    <!-- 修改内联style -->
+    <text style="color: {{textColor}}" onclick="changeInlineStyle">点击我修改文字颜色</text>
+  </div>
+</template>
+
+<style>
+  .normal-text {
+    font-weight: bold;
+  }
+  .text-blue {
+    color: #0faeff;
+  }
+  .text-red {
+    color: #f76160;
+  }
+</style>
+
+<script>
+  export default {
+    private: {
+      className: 'text-blue',
+      textColor: '#0faeff'
+    },
+    onInit () {
+      this.$page.setTitleBar({ text: '动态修改样式' })
+    },
+    changeClassName () {
+      this.className = 'text-red'
+    },
+    changeInlineStyle () {
+      this.textColor = '#f76160'
+    }
+  }
+</script>

@@ -1,0 +1,39 @@
+<template>
+  <div class="tutorial-page">
+    <a href="/PageParams/returnParams/pageb">跳转到页面B</a>
+    <text>{{msg}}</text>
+  </div>
+</template>
+
+<style>
+  .tutorial-page {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  a {
+    margin-top: 75px;
+    font-size: 30px;
+    color: #09ba07;
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  export default {
+    private: {
+      msg: ''
+    },
+    onInit () {
+      this.$page.setTitleBar({ text: '页面A' })
+    },
+    onShow () {
+      // 页面被切换显示时，从数据中检查是否有页面B传递来的数据
+      if (this.$app.$data.dataPageB && this.$app.$data.dataPageB.gotoPage === 'pageA') {
+        // 从数据中获取回传给本页面的数据
+        const data = this.$app.$data.dataPageB.params
+        this.msg = data.msg
+      }
+    }
+  }
+</script>

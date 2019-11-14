@@ -1,0 +1,51 @@
+<template>
+  <div class="tutorial-page">
+    <input class="btn" type="button" value="携带参数跳转页面" onclick="routePagePushWithParams"></input>
+    <input class="btn" type="button" value="携带参数跳转页面，当前页面无法返回" onclick="routePageReplaceWithParams"></input>
+  </div>
+</template>
+
+<style>
+  .tutorial-page {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn {
+    width: 550px;
+    height: 86px;
+    margin-top: 75px;
+    border-radius: 43px;
+    background-color: #09ba07;
+    font-size: 30px;
+    color: #ffffff;
+  }
+</style>
+
+<script>
+  // 导入模块
+  import router from '@system.router'
+
+  export default {
+    private: {
+      title: 'Hello, world!'
+    },
+    onInit () {
+      this.$page.setTitleBar({ text: '接口router切换页面并传递参数' })
+    },
+    routePagePushWithParams () {
+      // 跳转到应用内的某个页面
+      router.push({
+        uri: '/PageParams/receiveparams',
+        params: { key: this.title }
+      })
+    },
+    routePageReplaceWithParams () {
+      // 跳转到应用内的某个页面，当前页面无法返回
+      router.replace({
+        uri: '/PageParams/receiveparams',
+        params: { key: this.title }
+      })
+    }
+  }
+</script>

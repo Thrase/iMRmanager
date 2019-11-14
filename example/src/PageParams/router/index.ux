@@ -1,0 +1,56 @@
+<template>
+  <div class="tutorial-page">
+    <input class="btn" type="button" value="跳转到接收参数页面" onclick="routePagePush"></input>
+    <input class="btn" type="button" value="跳转到接收参数页面，当前页面无法返回" onclick="routePageReplace"></input>
+    <input class="btn" type="button" value="返回上一页" onclick="routePageBack"></input>
+    <input class="btn" type="button" value="清空页面记录，仅保留当前页面" onclick="routePageClear"></input>
+  </div>
+</template>
+
+<style>
+  .tutorial-page {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn {
+    width: 550px;
+    height: 86px;
+    margin-top: 75px;
+    border-radius: 43px;
+    background-color: #09ba07;
+    font-size: 30px;
+    color: #ffffff;
+  }
+</style>
+
+<script>
+  // 导入模块
+  import router from '@system.router'
+
+  export default {
+    onInit () {
+      this.$page.setTitleBar({ text: '接口router切换页面' })
+    },
+    routePagePush () {
+      // 跳转到应用内的某个页面
+      router.push({
+        uri: '/PageParams/receiveparams'
+      })
+    },
+    routePageReplace () {
+      // 跳转到应用内的某个页面，当前页面无法返回
+      router.replace({
+        uri: '/PageParams/receiveparams'
+      })
+    },
+    routePageBack () {
+      // 返回上一页面
+      router.back()
+    },
+    routePageClear () {
+      // 清空所有历史页面记录，仅保留当前页面
+      router.clear()
+    }
+  }
+</script>

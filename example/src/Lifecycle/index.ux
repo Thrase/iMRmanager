@@ -1,0 +1,89 @@
+<template>
+  <div class="tutorial-page">
+    <a href="/Home">打开首页</a>
+
+    <div class="tutorial-panel">
+      <text for="lcList">{{$idx}}:{{$item}}</text>
+    </div>
+  </div>
+</template>
+
+<style lang="less">
+  .tutorial-page {
+    flex-direction: column;
+    padding: 20px 10px;
+
+    a {
+      text-decoration: underline;
+      text-align: center;
+    }
+
+    text {
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    .tutorial-panel {
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  }
+</style>
+
+<script>
+  export default {
+    private: {
+      // 生命周期的文本列表
+      lcList: []
+    },
+    onInit () {
+      this.$page.setTitleBar({ text: '生命周期' })
+
+      this.lcList.push('onInit')
+
+      console.info(`触发：onInit`)
+      console.info(`执行：获取ViewModel的lcList属性：${this.lcList}`)   // 执行：获取ViewModel的lcList属性：onInit
+
+      // $app信息
+      console.info(`获取：manifest.json的config.data的数据：${this.$app.$data.name}`)
+      console.info(`获取：APP文件中的数据：${this.$app.$def.data1.name}`)
+      console.info(`执行：APP文件中的方法`, this.$app.$def.method1())
+    },
+    onReady () {
+      this.lcList.push('onReady')
+
+      console.info(`触发：onReady`)
+      console.info(`执行：获取模板节点：${this.$rootElement()}`)   // 执行：获取模板节点：<div attr={} style={"flexDirection":"column"}>...</div>
+    },
+    onShow () {
+      this.lcList.push('onShow')
+
+      console.info(`触发：onShow`)
+      console.info(`执行：获取页面显示状态属性：${this.$visible}`)  // true
+    },
+    onHide () {
+      this.lcList.push('onHide')
+
+      console.info(`触发：onHide`)
+      console.info(`执行：获取页面显示状态属性：${this.$visible}`)  // false
+    },
+    onDestroy () {
+      console.info(`触发：onDestroy`)
+      console.info(`执行：页面要被销毁，销毁状态：${this.$valid}，应该做取消接口订阅监听的操作: geolocation.unsubscribe()`)    // true，即将销毁
+      setTimeout(function () {
+        console.info(`执行：页面已被销毁，不会执行`)                // 页面已销毁，不会执行
+      }.bind(this), 0)
+    },
+    onBackPress () {
+      console.info(`触发：onBackPress`)
+
+      // true：表示自己处理；否则默认返回上一页
+      // return true
+    },
+    onMenuPress () {
+      this.lcList.push('onMenuPress')
+
+      console.info(`触发：onMenuPress`)
+    }
+  }
+</script>

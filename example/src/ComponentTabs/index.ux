@@ -1,0 +1,54 @@
+<template>
+  <div class="tutorial-page">
+    <div>
+      <a href="ComponentTabs/base/div">div组件模拟选项卡</a>
+      <a href="ComponentTabs/base/tabs">使用tabs组件</a>
+      <a href="ComponentTabs/base/component">页签内容使用自定义子组件</a>
+      <a href="ComponentTabs/renderControl">页签内容懒加载</a>
+      <a href="ComponentTabs/complex">tabs仅包含tab-content</a>
+    </div>
+    <div>
+      <text>--> /ComponentTabs/base/div</text>
+      <text>--> /ComponentTabs/base/tabs</text>
+      <text>--> /ComponentTabs/base/component</text>
+      <text>--> /ComponentTabs/complex</text>
+      <text>--> /ComponentTabs/renderControl</text>
+    </div>
+  </div>
+</template>
+
+<style lang="less">
+  .tutorial-page {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    div {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    a {
+      margin-top: 75px;
+      margin-left: 80px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #09ba07;
+      text-decoration: underline;
+    }
+
+    text {
+      margin-top: 75px;
+      margin-left: 30px;
+    }
+  }
+</style>
+
+<script>
+  export default {
+    onInit () {
+      this.$page.setTitleBar({ text: 'list教程--Tabs' })
+    }
+  }
+</script>
