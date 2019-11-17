@@ -32,6 +32,9 @@
       },
       "ocr": {
         "component": "index"
+      },
+      "pages": {
+        "component": "index"
       }
     },
     "widgets": {
