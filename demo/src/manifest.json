@@ -1,7 +1,7 @@
 {
-  "package": "com.example.demo",
-  "name": "demo",
-  "versionName": "1.0.0",
+  "package": "com.example.imrmanager",
+  "name": "小康病历管家",
+  "versionName": "1.0",
   "versionCode": "1",
   "minPlatformVersion": "1020",
   "icon": "/Common/logo.png",
@@ -54,7 +54,7 @@
     "menu": true,
     "pages": {
       "main": {
-        "titleBarText": "主界面",
+        "titleBarText": "小康-智能病历管家",
         "menu": true
       },
       "ocr": {

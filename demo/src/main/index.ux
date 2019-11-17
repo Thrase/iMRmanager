@@ -1,6 +1,7 @@
 <template>
   <div class="demo-page">
     <text class="title">登录界面</text>
+    <input class="btn" type="button" value="注册" ontouchend="signup" />
     <input class="btn" type="button" value="登录" ontouchend="login" />
     <input class="btn" type="button" value="OCR测试入口" ontouchend="ocrtest" />
   </div>
@@ -28,6 +29,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(242, 252, 242);
 }
 
 .title {
@@ -38,9 +40,9 @@ export default {
 .btn {
   width: 550px;
   height: 86px;
-  margin-top: 75px;
+  margin-top: 40px;
   border-radius: 43px;
-  background-color: #09ba07;
+  background-color: rgb(120,226,163);
   font-size: 30px;
   color: #ffffff;
 }
