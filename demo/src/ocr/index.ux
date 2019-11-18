@@ -10,21 +10,26 @@ import fetch from '@system.fetch'
 export default {
   take_photo() {
     media.takePhoto({
-      success: function (data) {
+      success: function (img) {
         console.log('take photo success!')
         fetch.fetch({
+          //感觉直接把应用的id和secret key写在前端会有安全问题...?
           url: 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=yCffU9iNxneXAN3vfuUM2eVC&client_secret=4Go0y8s1ZUOu4ylysmGKgAt0vixaT2fY',
           success: function (data) {
             let dict = JSON.parse(data.data)
             let token = dict.access_token
             console.log(token)
             fetch.fetch({
-              url: 'https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic',
+              url: 'https://aip.baidubce.com/rest/2.0/ocr/v1/general?access_token=' + token,
               data: {
-                'image': '',
+                'image': img.uri
               },
               header: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (result) {
+                result = JSON.parse(result.data)
+                console.log(result)
               }
             })
           }
