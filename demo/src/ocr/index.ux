@@ -23,7 +23,7 @@ export default {
               url: 'https://aip.baidubce.com/rest/2.0/ocr/v1/general?access_token=' + token,
               data: {
                 'image': img.uri
-              },
+              }.toString(),
               header: {
                 'content-type': 'application/x-www-form-urlencoded'
               },

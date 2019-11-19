@@ -3,7 +3,8 @@
     <div>
       <image src="../image/封面-shadow.png" class="main-image"></image>
     </div>
-    <input class="btn" type="button" value="返回" ontouchend="routePageBack"/>
+    <input style="left: 5%; top: 650px" class="btn" type="button" value="返回" ontouchend="routePageBack"/>
+    <input style="right: 5%; top: 650px" class="btn" type="button" value="返回" ontouchend="routePageBack"/>
   </div>
 </template>
 
@@ -38,8 +39,9 @@ export default {
 }
 
 .btn {
-  width: 550px;
-  height: 86px;
+  width: 255px;
+  height: 250px;
+  position: fixed;
   margin-top: 40px;
   border-radius: 43px;
   background-color: rgb(120,226,163);
