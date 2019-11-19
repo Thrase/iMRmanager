@@ -35,6 +35,9 @@
       },
       "pages": {
         "component": "index"
+      },
+      "pages/register": {
+        "component": "index"
       }
     },
     "widgets": {
@@ -52,12 +55,10 @@
     }
   },
   "display": {
-    "titleBarBackgroundColor": "#f2f2f2",
-    "titleBarTextColor": "#414141",
-    "menu": true,
+    "titleBar": false,
+    "menu": false,
     "pages": {
       "main": {
-        "titleBarText": "小康-智能病历管家",
         "menu": true
       },
       "ocr": {

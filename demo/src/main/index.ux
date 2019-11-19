@@ -1,7 +1,7 @@
 <template>
   <div class="demo-page">
-    <text class="title">登录界面</text>
-    <input class="btn" type="button" value="注册" ontouchend="signup" onclick="routePagePush"/>
+    <!-- <text class="title">登录界面</text> -->
+    <input class="btn" type="button" value="注册" ontouchend="signup"/>
     <input class="btn" type="button" value="登录" ontouchend="login" />
     <input class="btn" type="button" value="OCR测试入口" ontouchend="ocrtest" />
   </div>
@@ -13,7 +13,7 @@ import router from '@system.router'
 export default {
   login() {
     router.push({
-      uri: '/main'
+      uri: '/pages'
     })
   },
   ocrtest() {
@@ -21,9 +21,9 @@ export default {
       uri: '/ocr'
     })
   },
-  routePagePush(){
+  signup(){
     router.push({
-      uri :'/pages'
+      uri :'/pages/register'
     })
   }
 }
