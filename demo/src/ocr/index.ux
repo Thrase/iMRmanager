@@ -1,51 +1,17 @@
 <template>
-  <div>
-    <input class="btn" type="button" value="拍照" ontouchend="take_photo" />
+  <div class="page" onappear="pass_this(this)">
+    <input class="btn" type="button" value="拍照" onappear="pass_this(this)" ontouchend="take_photo" />
+    <input class="btn" type="button" value="样例" ontouchend="test" />
+    <text id="test1">测试文本1</text>
+    <text id="test2">测试文本2</text>
+    <text id="test3">测试文本3</text>
   </div>
 </template>
 
-<script>
-import media from '@system.media'
-import fetch from '@system.fetch'
-export default {
-  take_photo() {
-    media.takePhoto({
-      success: function (img) {
-        console.log('take photo success!')
-        fetch.fetch({
-          //感觉直接把应用的id和secret key写在前端会有安全问题...?
-          url: 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=yCffU9iNxneXAN3vfuUM2eVC&client_secret=4Go0y8s1ZUOu4ylysmGKgAt0vixaT2fY',
-          success: function (data) {
-            let dict = JSON.parse(data.data)
-            let token = dict.access_token
-            console.log(token)
-            fetch.fetch({
-              url: 'https://aip.baidubce.com/rest/2.0/ocr/v1/general?access_token=' + token,
-              data: {
-                'image': img.uri
-              }.toString(),
-              header: {
-                'content-type': 'application/x-www-form-urlencoded'
-              },
-              success: function (result) {
-                result = JSON.parse(result.data)
-                console.log(result)
-              }
-            })
-          }
-        })
-      },
-      fail: function () {
-        console.log('take photo fail!')
-      }
-    })
-  }
-}
-</script>
-
+<script src="../ocr/index.js"></script>
 
 <style>
-.demo-page {
+.page {
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -54,8 +20,7 @@ export default {
 .btn {
   width: 300px;
   height: 80px;
-  margin-left: 160px;
-  margin-top: 75px;
+  margin-top: 20px;
   border-radius: 20px;
   background-color: #77d9ff;
   font-size: 30px;
