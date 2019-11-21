@@ -1,0 +1,53 @@
+<template>
+  <div class="demo-page">
+    <text class="title">新建病历</text>
+    <input class="btn" type="button" value="返回" ontouchend="signup" onclick="routePageBack"/>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+
+export default {
+  onInit() {
+    this.$page.setTitleBar({text: '小康-智能病历管家'})
+  },
+  login() {
+    router.push({
+      uri: '/main'
+    })
+  },
+  ocrtest() {
+    router.push({
+      uri: '/ocr'
+    })
+  },
+  routePageBack(){
+    router.back()
+  }
+}
+</script>
+
+<style>
+.demo-page {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(242, 252, 242);
+}
+
+.title {
+  font-size: 40px;
+  text-align: center;
+}
+
+.btn {
+  width: 550px;
+  height: 86px;
+  margin-top: 40px;
+  border-radius: 43px;
+  background-color: rgb(120,226,163);
+  font-size: 30px;
+  color: #ffffff;
+}
+</style>

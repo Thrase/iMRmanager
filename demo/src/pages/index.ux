@@ -9,19 +9,19 @@
       <text class="hello">2019年11月19日</text>
     </div>
     <div style="position: fixed;">
-      <text class="day_time">早上好</text>
+      <text class="day-time">早上好</text>
     </div>
     <div style="position: fixed;">
       <text class="tips">气候干燥，记得一天七杯水哦。</text>
     </div>
 
-    <div class="btn-control">
+    <div>
       <!-- <input class="btn" id="btn1" type="button" ontouchend="routePageBack"/> -->
-      <image src="../image/ui-新建病历-di.png" ontouchend="routePageBack"></image>
-      <image src="../image/ui-查找病历-di.png" ontouchend="routePageBack"></image>
+      <image src="../image/ui-新建病历-di.png" ontouchend="route_newmr_page"></image>
+      <image src="../image/ui-查找病历-di.png" ontouchend="route_searchmr_page"></image>
     </div>
 
-    <div class="btn-control">
+    <div>
       <image src="../image/ui-医嘱建议-di.png" ontouchend="routePageBack"></image>
       <image src="../image/ui-用药跟踪-di.png" ontouchend="routePageBack"></image>
     </div>
@@ -37,6 +37,16 @@ export default {
   },
   routePageBack(){
     router.back()
+  },
+  route_newmr_page(){
+    router.push({
+      uri :'/pages/newmr'
+    })
+  },
+  route_searchmr_page(){
+    router.push({
+      uri :'/pages/searchmr'
+    })
   }
 }
 </script>
@@ -55,6 +65,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-grow: 0;
+  margin-bottom: 40px;
 }
 
 .hello {
@@ -66,11 +77,11 @@ export default {
   margin-left: 60px;
 }
 
-.day_time {
+.day-time {
   color:rgb(255, 255, 255);
   font-family: '微软雅黑';
   font-size: 70px;
-  margin-top: 700px;
+  margin-top: 680px;
   margin-left: 60px;
   font-weight: 800;
 }
@@ -79,7 +90,7 @@ export default {
   color:rgb(255, 255, 255);
   font-family: '微软雅黑';
   font-size: 40px;
-  margin-top: 800px;
+  margin-top: 780px;
   margin-left: 60px;
   font-weight: 400;
 }
@@ -89,10 +100,6 @@ export default {
   /* justify-content: center; */
   align-items: center;
   background-color: rgb(242, 252, 242);
-}
-
-.btn-control {
-
 }
 
 .btn {
