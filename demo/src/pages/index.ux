@@ -4,16 +4,26 @@
     <text class="title">小康-智能病历管家</text>
     <div>
       <image src="../image/封面-shadow.png" class="main-image"></image>
+    </div>
+    <div style="position: fixed;">
       <text class="hello">2019年11月19日</text>
-      <text class="day_time">早上好</text>
+    </div>
+    <div style="position: fixed;">
+      <text class="day-time">早上好</text>
+    </div>
+    <div style="position: fixed;">
       <text class="tips">气候干燥，记得一天七杯水哦。</text>
     </div>
 
     <div>
-      <input style="left: 5%; top: 61%" class="btn" id="btn1" type="button" ontouchend="routePageBack"/>
-      <input style="right: 6%; top: 61%" class="btn" id="btn2" type="button" ontouchend="routePageBack"/>
-      <input style="left: 5%; top: 80%" class="btn" id="btn3" type="button" ontouchend="routePageBack"/>
-      <input style="right: 6%; top: 80%" class="btn" id="btn4" type="button" ontouchend="routePageBack"/>
+      <!-- <input class="btn" id="btn1" type="button" ontouchend="routePageBack"/> -->
+      <image src="../image/ui-新建病历-di.png" ontouchend="route_newmr_page"></image>
+      <image src="../image/ui-查找病历-di.png" ontouchend="route_searchmr_page"></image>
+    </div>
+
+    <div>
+      <image src="../image/ui-医嘱建议-di.png" ontouchend="routePageBack"></image>
+      <image src="../image/ui-用药跟踪-di.png" ontouchend="routePageBack"></image>
     </div>
   </div>
 </template>
@@ -27,6 +37,16 @@ export default {
   },
   routePageBack(){
     router.back()
+  },
+  route_newmr_page(){
+    router.push({
+      uri :'/pages/newmr'
+    })
+  },
+  route_searchmr_page(){
+    router.push({
+      uri :'/pages/searchmr'
+    })
   }
 }
 </script>
@@ -36,7 +56,7 @@ export default {
   color:rgb(0, 178, 111);
   font-family: '微软雅黑';
   font-size: 45px;
-  margin: 70px 280px 30px 0px;
+  margin: 40px 280px 30px 0px;
   font-weight: bold;
 }
 
@@ -44,29 +64,25 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
   flex-grow: 0;
-  width: 90%;
-  height: 90%;
+  margin-bottom: 40px;
 }
 
 .hello {
   color:rgb(255, 255, 255);
   font-family: '微软雅黑';
   font-size: 65px;
-  position: fixed;
-  margin-top: 40px;
-  margin-left: 70px;
   font-weight: 500;
+  margin-top: 160px;
+  margin-left: 60px;
 }
 
-.day_time {
+.day-time {
   color:rgb(255, 255, 255);
   font-family: '微软雅黑';
-  font-size: 60px;
-  position: fixed;
-  margin-top: 550px;
-  margin-left: 70px;
+  font-size: 70px;
+  margin-top: 680px;
+  margin-left: 60px;
   font-weight: 800;
 }
 
@@ -74,9 +90,8 @@ export default {
   color:rgb(255, 255, 255);
   font-family: '微软雅黑';
   font-size: 40px;
-  position: fixed;
-  margin-top: 640px;
-  margin-left: 70px;
+  margin-top: 780px;
+  margin-left: 60px;
   font-weight: 400;
 }
 
@@ -88,27 +103,12 @@ export default {
 }
 
 .btn {
-  width: 43%;
-  height: 43%;
-  position: fixed;
-  margin: 0 auto;
-  color: #ffffff;
-}
-
-#btn1 {
-  background-image:url("../image/ui-新建病历-di.png");
-}
-
-#btn2 {
-  background-image:url("../image/ui-查找病历-di.png");
-}
-
-#btn3 {
-  background-image:url("../image/ui-医嘱建议-di.png");
-}
-
-#btn4 {
-  background-image:url("../image/ui-用药跟踪-di.png");
+  width: 350px;
+  height: 300px;
+  /* position: fixed; */
+  margin: 0 0 0 0px;
+  /* border-radius: 3px; */
+  color: rgb(242,252,242);
 }
 
 </style>

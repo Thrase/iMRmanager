@@ -1,0 +1,67 @@
+<template>
+  <div class="search-page">
+    <text class="title">查找病历</text>
+
+    <div>
+      <image src="../../image/search-按照类别.png" class="btn" ontouchend="route_page_back"></image>
+    </div>
+
+    <div>
+      <image src="../../image/search-按照时间.png" class="btn" ontouchend="route_page_back"></image>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+
+export default {
+  onInit() {
+    // this.$page.setTitleBar({text: '小康-智能病历管家'})
+  },
+  route_page_back(){
+    router.back()
+  },
+  route_newmr_page(){
+    router.push({
+      uri :'/pages/newmr'
+    })
+  },
+  route_searchmr_page(){
+    router.push({
+      uri :'/pages/searchmr'
+    })
+  }
+}
+</script>
+
+<style>
+.title {
+  color:rgb(0, 178, 111);
+  font-family: '微软雅黑';
+  font-size: 45px;
+  margin: 40px 470px 30px 0px;
+  font-weight: bold;
+}
+
+
+.search-page {
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: rgb(242, 252, 242);
+}
+
+.btn {
+  /* background-color: rgb(2,252,242); */
+  background-image: url("../../image/search-按照类别.png");
+  border-radius: 30px;
+  width: 90%;
+  /* height: 600px; */
+  /* position: fixed; */
+  margin: 0 0 0 0px;
+  /* border-radius: 3px; */
+ 
+}
+
+</style>

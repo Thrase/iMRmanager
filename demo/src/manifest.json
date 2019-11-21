@@ -38,6 +38,12 @@
       },
       "pages/register": {
         "component": "index"
+      },
+      "pages/newmr": {
+        "component": "index"
+      },
+      "pages/searchmr": {
+        "component": "index"
       }
     },
     "widgets": {

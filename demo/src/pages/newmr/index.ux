@@ -1,9 +1,7 @@
 <template>
   <div class="demo-page">
-    <!-- <text class="title">登录界面</text> -->
-    <input class="btn" type="button" value="注册" ontouchend="signup"/>
-    <input class="btn" type="button" value="主界面入口" ontouchend="login" />
-    <input class="btn" type="button" value="OCR测试入口" ontouchend="ocrtest" />
+    <text class="title">新建病历</text>
+    <input class="btn" type="button" value="返回" ontouchend="signup" onclick="routePageBack"/>
   </div>
 </template>
 
@@ -11,9 +9,12 @@
 import router from '@system.router'
 
 export default {
+  onInit() {
+    this.$page.setTitleBar({text: '小康-智能病历管家'})
+  },
   login() {
     router.push({
-      uri: '/pages'
+      uri: '/main'
     })
   },
   ocrtest() {
@@ -21,10 +22,8 @@ export default {
       uri: '/ocr'
     })
   },
-  signup(){
-    router.push({
-      uri :'/pages/register'
-    })
+  routePageBack(){
+    router.back()
   }
 }
 </script>
