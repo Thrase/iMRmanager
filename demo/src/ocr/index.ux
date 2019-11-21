@@ -1,29 +1,78 @@
 <template>
-  <div class="page" onappear="pass_this(this)">
-    <input class="btn" type="button" value="拍照" onappear="pass_this(this)" ontouchend="take_photo" />
-    <input class="btn" type="button" value="样例" ontouchend="test" />
-    <text id="test1">测试文本1</text>
-    <text id="test2">测试文本2</text>
-    <text id="test3">测试文本3</text>
+  <div id="page" onappear="pass_this(this); take_photo()">
+    <image id="image" src="{{image_uri}}" />
+    <list id="list">
+      <list-item type="table">
+        <text class="key">时间</text>
+        <text class="value">{{table[0]}}</text>
+      </list-item>
+      <list-item type="table">
+        <text class="key">医院</text>
+        <text class="value">{{table[1]}}</text>
+      </list-item>
+      <list-item type="table">
+        <text class="key">主诉</text>
+        <text class="value">{{table[2]}}</text>
+      </list-item>
+      <list-item type="table">
+        <text class="key">诊断</text>
+        <text class="value">{{table[3]}}</text>
+      </list-item>
+      <list-item type="table">
+        <text class="key">处理意见</text>
+        <text class="value">{{table[4]}}</text>
+      </list-item>
+      <list-item type="table">
+        <text class="key">测试文本</text>
+        <text class="value">{{table[5]}}</text>
+      </list-item>
+    </list>
+    <input id="button" type="button" value="{{button_text}}" ontouchend="take_photo()" />
   </div>
 </template>
 
 <script src="../ocr/index.js"></script>
 
 <style>
-.page {
+#page {
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  background-color: rgb(242, 252, 242);
 }
 
-.btn {
+#image {
+  width: 80%;
+  height: 300px;
+  margin-top: 80px;
+}
+
+#list {
+  width: 80%;
+  height: 500px;
+  margin-top: 40px;
+}
+
+#button {
   width: 300px;
   height: 80px;
   margin-top: 20px;
   border-radius: 20px;
-  background-color: #77d9ff;
+  background-color: rgb(120, 226, 163);
   font-size: 30px;
   color: #000000;
+}
+
+.key {
+  width: 160px;
+  height: 50px;
+  background-color: rgb(212, 255, 208);
+  text-align: center;
+}
+
+.value {
+  width: 340px;
+  height: 50px;
+  background-color: rgb(181, 255, 191);
+  text-align: center;
 }
 </style>
