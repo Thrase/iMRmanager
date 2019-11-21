@@ -2,7 +2,7 @@
   <div class="demo-page">
     <!-- <text class="title">登录界面</text> -->
     <input class="btn" type="button" value="注册" ontouchend="signup"/>
-    <input class="btn" type="button" value="登录" ontouchend="login" />
+    <input class="btn" type="button" value="主界面入口" ontouchend="login" />
     <input class="btn" type="button" value="OCR测试入口" ontouchend="ocrtest" />
   </div>
 </template>
