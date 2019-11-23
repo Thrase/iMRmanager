@@ -44,6 +44,12 @@
       },
       "pages/searchmr": {
         "component": "index"
+      },
+      "pages/advice": {
+        "component": "index"
+      },
+      "pages/medicine": {
+        "component": "index"
       }
     },
     "widgets": {

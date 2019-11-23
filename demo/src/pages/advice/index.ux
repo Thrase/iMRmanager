@@ -1,0 +1,72 @@
+<template>
+  <div class="search-page">
+    <text class="title" ontouchend="route_page_back">⇦  医嘱建议</text>
+
+    <div>
+      <!-- <text style="position: fixed;" class="main_advice">医嘱</text> -->
+      <image src="../../image/advice-绿色卡片.png" class="btn" ontouchend="route_page_back"></image>
+    </div>
+
+    <div>
+      <!-- <text style="position: fixed;">建议</text> -->
+      <image src="../../image/advice-白色卡片.png" class="btn" ontouchend="route_page_back"></image>
+    </div>
+    <div>
+      <image src="../../image/advice-白色卡片.png" class="btn" ontouchend="route_page_back"></image>
+    </div>
+    <div>
+      <image src="../../image/advice-白色卡片.png" class="btn" ontouchend="route_page_back"></image>
+    </div>
+    <div>
+      <image src="../../image/advice-白色卡片.png" class="btn" ontouchend="route_page_back"></image>
+    </div>
+
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+
+export default {
+  onInit() {
+    // this.$page.setTitleBar({text: '小康-智能病历管家'})
+  },
+  route_page_back(){
+    router.back()
+  }
+}
+</script>
+
+<style>
+.title {
+  color:rgb(0, 178, 111);
+  font-family: '微软雅黑';
+  font-size: 45px;
+  margin: 40px 400px 30px 10px;
+  font-weight: bold;
+}
+
+.main_advice {
+  color: #ffffff;
+  font-family: '微软雅黑';
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.search-page {
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: rgb(242, 252, 242);
+}
+
+.btn {
+  /* background-color: rgb(2,252,242); */
+  /* border-radius: 30px; */
+  width: 90%;
+  margin: 0 0 0 0px;
+  /* border-radius: 3px; */
+ 
+}
+
+</style>

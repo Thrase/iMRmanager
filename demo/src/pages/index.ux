@@ -22,8 +22,8 @@
     </div>
 
     <div>
-      <image src="../image/ui-医嘱建议-di.png" ontouchend="routePageBack"></image>
-      <image src="../image/ui-用药跟踪-di.png" ontouchend="routePageBack"></image>
+      <image src="../image/ui-医嘱建议-di.png" ontouchend="route_advice_page"></image>
+      <image src="../image/ui-用药跟踪-di.png" ontouchend="route_medicine_page"></image>
     </div>
   </div>
 </template>
@@ -40,12 +40,22 @@ export default {
   },
   route_newmr_page(){
     router.push({
-      uri :'/pages/newmr'
+      uri :'/ocr'
     })
   },
   route_searchmr_page(){
     router.push({
       uri :'/pages/searchmr'
+    })
+  },
+  route_advice_page(){
+    router.push({
+      uri :'/pages/advice'
+    })
+  },
+  route_medicine_page(){
+    router.push({
+      uri :'/pages/medicine'
     })
   }
 }
