@@ -2,6 +2,8 @@ import media from '@system.media'
 import fetch from '@system.fetch'
 import file from '@system.file'
 import prompt from '@system.prompt'
+import router from '@system.router'
+import image from '@system.image'
 
 
 //垃圾Quick App IDE，采用严格模式，函数里不能用this，只能这样传
@@ -12,29 +14,41 @@ function pass_this(_this) { page = _this }
 function take_photo() {
   media.takePhoto({
     success: function (photo_data) {
-      file.readArrayBuffer({
-        //debug
-        //uri: '/ocr/test_image.jpg',
+      page.progress = '图片压缩中'
+      image.compressImage({
         uri: photo_data.uri,
-        success: function (file_data) {
-          page.image_uri = photo_data.uri
-          request_ocr(uint8arr_to_base64(file_data.buffer))
+        quality: 80,
+        ratio: 2,
+        success: function (compressed_data) {
+          page.image_uri = compressed_data.uri
+          page.progress = '图片读取中'
+          file.readArrayBuffer({
+            //debug
+            //uri: '/ocr/test_image.jpg',
+            uri: compressed_data.uri,
+            success: function (file_data) {
+              request_ocr(uint8arr_to_base64(file_data.buffer))
+            },
+            fail: function () { message('错误', '图片文件不存在') }
+          })
         },
-        fail: function () { message('错误', '图片文件不存在') }
+        fail: function () { message('错误', '图片压缩错误') }
       })
-    }
+    },
+    fail: function () { message('错误', '拍照时发生错误') },
+    cancel: function () { router.back() }
   })
 }
 
 //获取百度OCR的识别信息
 function request_ocr(image_base64) {
-  page.button_text = '图片处理中'
+  page.progress = '图片处理中'
   //获取百度OCR的token
   fetch.fetch({
     url: 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=yCffU9iNxneXAN3vfuUM2eVC&client_secret=4Go0y8s1ZUOu4ylysmGKgAt0vixaT2fY',
     //token获取成功，回调请求OCR识别结果函数，JS的回调函数令人窒息
     success: function (token_data) {
-      page.button_text = 'OCR识别中'
+      page.progress = 'OCR识别中'
       let token = JSON.parse(token_data.data).access_token
       fetch.fetch({
         //url: 'http://192.168.1.101?access_token=' + token,
@@ -47,7 +61,6 @@ function request_ocr(image_base64) {
         },
         //OCR识别完成，回调处理识别数据的函数
         success: function (result_data) {
-          page.button_text = '重新拍照'
           let result = JSON.parse(result_data.data)
           if (result.error_code) { message('错误', 'OCR识别出错，请重新拍照') }
           else if (result.words_result) { data_process(result.words_result) }
@@ -62,13 +75,19 @@ function request_ocr(image_base64) {
 //处理OCR识别结果
 function data_process(result) {
   for (let i = 0; i < result.length; i++) {
-    if (result[i].words.indexOf('时间') != -1) { page.table[0] += result[i].words }
-    if (result[i].words.indexOf('医院') != -1) { page.table[1] += result[i].words }
-    if (result[i].words.indexOf('主诉') != -1) { page.table[2] += result[i].words }
-    if (result[i].words.indexOf('诊断') != -1) { page.table[3] += result[i].words }
-    if (result[i].words.indexOf('意见') != -1) { page.table[4] += result[i].words }
-    page.table[5] += result[i].words + '; '
+    if (result[i].words.indexOf('时间') != -1) { page.table1 += result[i].words }
+    if (result[i].words.indexOf('医院') != -1) { page.table2 += result[i].words }
+    if (result[i].words.indexOf('主诉') != -1) { page.table3 += result[i].words }
+    if (result[i].words.indexOf('诊断') != -1) { page.table4 += result[i].words }
+    if (result[i].words.indexOf('意见') != -1) { page.table5 += result[i].words }
+    page.table6 += result[i].words + '; '
   }
+  page.progress = '识别完成，点击空白处即可编辑'
+}
+
+//上传OCR识别结果到后端
+function save_upload() {
+  message('提示', '病历保存成功！')
 }
 
 /*其他辅助函数*/
@@ -102,21 +121,24 @@ function uint8arr_to_base64(bytes) {
   return result
 }
 
-//弹窗展示函数
+//弹窗展示并返回首页函数
 function message(title, content) {
   prompt.showDialog({
     title: title,
     message: content,
     buttons: [{ text: '确认', color: '#000000' }]
   })
+  router.back()
 }
 
 
 export default {
   private: {
-    button_text: '照片拍摄中',
-    image_uri: '../ocr/test_image.jpg',
-    table: ['', '', '', '', '', '']
+    progress: '等待拍摄照片（请横屏拍摄）',
+    image_uri: '../image/封面-shadow.png',
+    table1: '', table2: '', table3: '', table4: '', table5: '', table6: ''
   },
-  pass_this, take_photo
+  pass_this,
+  take_photo,
+  save_upload
 }

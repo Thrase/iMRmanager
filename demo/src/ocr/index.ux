@@ -1,33 +1,39 @@
 <template>
   <div id="page" onappear="pass_this(this); take_photo()">
+    <text id="title">完善病历</text>
     <image id="image" src="{{image_uri}}" />
-    <list id="list">
-      <list-item type="table">
+    <text id="progress">{{progress}}</text>
+    <text id="result">识别结果</text>
+    <div id="list">
+      <div>
+        <text class="key">病症</text>
+        <textarea class="value">{{table4}}</textarea>
+      </div>
+      <div>
         <text class="key">时间</text>
-        <text class="value">{{table[0]}}</text>
-      </list-item>
-      <list-item type="table">
+        <textarea class="value">{{table1}}</textarea>
+      </div>
+      <div>
         <text class="key">医院</text>
-        <text class="value">{{table[1]}}</text>
-      </list-item>
-      <list-item type="table">
-        <text class="key">主诉</text>
-        <text class="value">{{table[2]}}</text>
-      </list-item>
-      <list-item type="table">
-        <text class="key">诊断</text>
-        <text class="value">{{table[3]}}</text>
-      </list-item>
-      <list-item type="table">
-        <text class="key">处理意见</text>
-        <text class="value">{{table[4]}}</text>
-      </list-item>
-      <list-item type="table">
-        <text class="key">测试文本</text>
-        <text class="value">{{table[5]}}</text>
-      </list-item>
-    </list>
-    <input id="button" type="button" value="{{button_text}}" ontouchend="take_photo()" />
+        <textarea class="value">{{table2}}</textarea>
+      </div>
+      <div>
+        <text class="key" style="height: 140px">处理及意见</text>
+        <textarea class="value" style="height: 140px">{{table5}}</textarea>
+      </div>
+      <div>
+        <text class="key" style="height: 140px">医嘱与用药</text>
+        <textarea class="value" style="height: 140px">{{table3}}</textarea>
+      </div>
+      <div>
+        <text class="key" style="height: 280px">全文文本</text>
+        <textarea class="value" style="height: 280px">{{table6}}</textarea>
+      </div>
+    </div>
+    <div id="button">
+      <input id="save" type="button" value="保存病历" ontouchend="save_upload()" />
+      <input id="retake" type="button" value="重新拍照" ontouchend="take_photo()" />
+    </div>
   </div>
 </template>
 
@@ -40,39 +46,87 @@
   background-color: rgb(242, 252, 242);
 }
 
+#title {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  margin-left: -470px;
+  color: rgb(0, 178, 111);
+  font-family: "微软雅黑";
+  font-size: 45px;
+  font-weight: bold;
+}
+
 #image {
-  width: 80%;
-  height: 300px;
-  margin-top: 80px;
+  width: 90%;
+  height: 400px;
+  border: 3px solid rgb(0, 178, 111);
+  border-radius: 10px;
+}
+
+#progress {
+  margin-top: 20px;
+  color:  rgb(0, 178, 111);
+  font-size: 30px;
+}
+
+#result {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  margin-left: -470px;
+  color: rgb(0, 178, 111);
+  font-family: "微软雅黑";
+  font-size: 45px;
+  font-weight: bold;
 }
 
 #list {
-  width: 80%;
-  height: 500px;
-  margin-top: 40px;
-}
-
-#button {
-  width: 300px;
-  height: 80px;
-  margin-top: 20px;
-  border-radius: 20px;
-  background-color: rgb(120, 226, 163);
-  font-size: 30px;
-  color: #000000;
+  width: 90%;
+  height: 800px;
+  flex-direction: column;
 }
 
 .key {
-  width: 160px;
-  height: 50px;
+  width: 35%;
+  height: 70px;
   background-color: rgb(212, 255, 208);
   text-align: center;
+  font-size: 30px;
 }
 
 .value {
-  width: 340px;
-  height: 50px;
-  background-color: rgb(181, 255, 191);
+  width: 65%;
+  height: 70px;
+  padding-top: 15px;
+  border-bottom: 3px solid rgb(120, 226, 163);
+  background-color: rgb(255, 255, 255);
   text-align: center;
+  font-size: 30px;
+}
+
+#button {
+  height: 100px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  flex-direction: row;
+}
+
+#save {
+  width: 200px;
+  height: 80px;
+  margin-right: 20px;
+  border-radius: 20px;
+  background-color: rgb(120, 226, 163);
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+}
+
+#retake {
+  width: 200px;
+  height: 80px;
+  margin-left: 20px;
+  border-radius: 20px;
+  background-color: rgb(223, 223, 223);
+  color: rgb(248, 248, 248);
+  font-size: 30px;
 }
 </style>
