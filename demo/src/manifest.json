@@ -30,9 +30,6 @@
       "main": {
         "component": "index"
       },
-      "ocr": {
-        "component": "index"
-      },
       "pages": {
         "component": "index"
       },

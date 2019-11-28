@@ -40,7 +40,7 @@ export default {
   },
   route_newmr_page(){
     router.push({
-      uri :'/ocr'
+      uri :'pages/newmr'
     })
   },
   route_searchmr_page(){

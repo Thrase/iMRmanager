@@ -135,7 +135,7 @@ function message(title, content) {
 export default {
   private: {
     progress: '等待拍摄照片（请横屏拍摄）',
-    image_uri: '../image/封面-shadow.png',
+    image_uri: '../../image/封面-shadow.png',
     table1: '', table2: '', table3: '', table4: '', table5: '', table6: ''
   },
   pass_this,
