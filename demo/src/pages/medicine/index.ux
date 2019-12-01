@@ -1,49 +1,165 @@
 <template>
-  <div class="search-page">
-    <text class="title" ontouchend="route_page_back">⇦  用药跟踪</text>
-
-    <div>
-      <!-- <text style="position: fixed;" class="main_advice">医嘱</text> -->
-      <image src="../../image/medicine-添加.png" class="btn" ontouchend="route_page_back"></image>
+  <div>
+    <div class="midicine-page">
+      <text class="top" ontouchend="route_page_back" value="← 用药跟踪"></text>
     </div>
-
-    <div>
-      <!-- <text style="position: fixed;">建议</text> -->
-      <image src="../../image/advice-白色卡片.png" class="btn" ontouchend="route_page_back"></image>
-    </div>
-    <div>
-      <image src="../../image/advice-白色卡片.png" class="btn" ontouchend="route_page_back"></image>
-    </div>
-    <div>
-      <image src="../../image/advice-白色卡片.png" class="btn" ontouchend="route_page_back"></image>
-    </div>
-    <div>
-      <image src="../../image/advice-白色卡片.png" class="btn" ontouchend="route_page_back"></image>
-    </div>
-
+    <list class="list">
+     <list-item>
+       <input type="button" class="add" value="添加用药">
+     </list-item>
+     <list-item  for="{{list}}">
+       <div class="thing">
+         <list>
+           <list-item class="thing-title">
+              <text class="tilte-font" value="{{names[$idx]}}" ></text>
+           </list-item>
+           <list-item class="thing-thins">
+              <div class="thins-oneline">
+                <text class="thins-texl" value="服药周期"></text>
+                  <text class="thin-texr" value="{{times[$idx]}}"></text>
+              </div>                      
+           </list-item>
+           <list-item class="thing-thins">
+              <div class="thins-oneline">
+                <text class="thins-texl" value="服药量"></text>
+                  <text class="thin-texr" value="{{quanlity[$idx]}}"></text>
+              </div>                      
+           </list-item>
+           <list-item class="thing-thins">
+              <div class="thins-oneline">
+                <text class="thins-texl" value="剩余"></text>
+                  <text class="thin-texr" value="21包"></text>
+              </div>                      
+           </list-item>           
+         </list>
+       </div>
+     </list-item>
+   </list>
   </div>
 </template>
 
 <script>
 import router from '@system.router'
-
-export default {
-  onInit() {
-    // this.$page.setTitleBar({text: '小康-智能病历管家'})
+export default{
+  private: {
+    list:[1,2,3,4],
+    names:{0:'阿司匹林',1:'克痢痧',2:'板蓝根',3:'蛇胆川贝液'},
+    times:{0:'一日3-4次',1:'一日3次',2:'一日3次',3:'一日2次'},
+    quanlity:{0:'一次3片',1:'一次2包',2:'一次2包',3:'一次10ml'}   
   },
   route_page_back(){
     router.back()
-  }
+  },
+  onInit() {
+    this.$page.setTitleBar({text: '医药跟踪'})
+  },
 }
 </script>
 
 <style>
+.top{
+  width: 100%;
+  background-color: #FFFFFF;
+  color: rgb(0, 178, 111);
+  font-size:50px;
+  font-weight: bolder;
+  margin-left: 20px;
+  margin-top: 10px;
+  height: 60px;
+}
+.board{
+  width:100%;
+  position: fixed;
+}
+.list{
+  top:90px;
+  width:100%;
+  background-color: #FFFFFF;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+.add{
+  width:100%;
+  height:86px;
+  border-radius: 30px;
+  margin: 10px 30px 10px 30px;
+  color:#FFFFFF;
+  font-size: 40px;
+  font-weight: bolder;
+  background-color: rgb(0,178,111);
+}
+.thing{
+  width: 100%;
+  height:480px;
+  margin:10px 30px 10px 30px;
+  background-color: rgb(58, 218, 156);
+  border-radius: 43px;
+}
+.thing-title{
+  width:100%;
+  height: 80px;
+  margin:30px 30px 10px 20px;
+  background-color: rgba(5, 196, 123, 0.5);
+  border-radius: 43px;
+}
+.tilte-font{
+  left:30px;
+  color: #FFFFFF;
+  font-size: 50px;
+  font-weight: bolder;
+}
+.thing-thins{
+  width:100%;
+  margin: 30px 30px 0px 20px;
+  background-color: rgba(5, 196, 123, 0.5);
+  border-radius:43px;
+}
+.thins-oneline{
+  width: 100%;
+  height: 60px;
+  margin-top: 10px;
+}
+.thins-texl{
+  width: 50%;
+  left:30px;
+  color:rgb(0, 178, 111);
+  font-size: 45px;
+  font-weight: bolder;
+}
+.thin-texr{
+  width: 50%;
+  color:#FFFFFF;
+  font-size: 45px;
+  font-weight: bolder;
+}
+.tmp{
+  width: 100%;
+  height: 250px;
+  background-color: rgba(255, 255, 255, 0.637);
+}
 .title {
+  width:100%;
+  height: 90px;
+  top:0px;
+  left:70px;
   color:rgb(0, 178, 111);
   font-family: '微软雅黑';
   font-size: 45px;
-  margin: 40px 400px 30px 10px;
   font-weight: bold;
+}
+
+.search-line{
+  top:100px;
+  width:90%;
+  height:50px;
+  left:0px;
+  border-radius: 30px;
+  background-color:#bdbdbd;
+  color:#FFFFFF;
+  font-family: '微软雅黑';
+  font-size:30px;
+  text-align: center;
 }
 
 .main_advice {
@@ -63,8 +179,9 @@ export default {
 .btn {
   /* background-color: rgb(2,252,242); */
   /* border-radius: 30px; */
-  width: 90%;
-  margin: 0 0 0 0px;
+  top:690px;
+  height: 60px;
+  width: 100%;
   /* border-radius: 3px; */
  
 }
