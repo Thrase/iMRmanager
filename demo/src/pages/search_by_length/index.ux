@@ -1,0 +1,121 @@
+<template>
+  <div>
+    <div class="search-by-type-page">
+      <text class="top" ontouchend="route_page_back" value="←查看病历-类别"></text>
+    </div>
+    <list class="list">
+      <list-item>
+        <text class="type" value="长期类型"></text>
+      </list-item>
+     <list-item  for="{{list1}}" class="tmp1">
+       <text class="illness1" value="{{names[$item]}}"></text>
+       <text class="illness2" value="{{times[$item]}}例"></text>
+     </list-item>
+     <list-item>
+        <text class="type" value="短期类型"></text>
+     </list-item>
+     <list-item  for="{{list2}}" class="tmp2">
+       <text class="illness3" value="{{names[$item]}}"></text>
+       <text class="illness4" value="{{times[$item]}}例"></text>
+     </list-item>
+   </list>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+export default{
+  private: {
+    list1:[0,1,2],
+    list2:[3,4,5],
+    names:{0:'糖尿病',1:'哮喘',2:'鼻炎',3:'呼吸道感染',4:'胃炎',5:'发烧'},
+    times:{0:'13',1:'8',2:'6',3:'8',4:'3',5:'2'}, 
+  },
+  route_page_back(){
+    router.back()
+  },
+  onInit() {
+    this.$page.setTitleBar({text: '查看病历-类别'})
+  },
+}
+</script>
+
+<style>
+.top{
+  width: 100%;
+  background-color: #FFFFFF;
+  color: rgb(0, 178, 111);
+  font-size:50px;
+  font-weight: bolder;
+  margin-left: 20px;
+  margin-top: 10px;
+  height: 60px;
+}
+.list{
+  top:90px;
+  width:100%;
+  background-color: #FFFFFF;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+.type{
+  width: 100%;
+  font-size: 40px;
+  font-weight: bolder;
+  left:30px;
+  height: 66px;
+  color: rgb(0,178,111);
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.tmp1{
+  width: 100%;
+  height:200px;
+  margin:20px 30px 20px 30px;
+  border-radius: 40px;
+  background-color: rgb(0,178,111);
+  color:rgb(255,255,255);
+}
+.illness1{
+  width: 70%;
+  height: 100px;
+  color:#FFFFFF;
+  top: 30px;
+  left:40px;
+  font-size: 80px;
+  font-weight: bolder;
+}
+.illness2{
+  width: 30%;
+  height: 100px;
+  color:#FFFFFF;
+  top: 50px;
+  font-size: 80px;
+  font-weight: bolder;
+}
+.illness3{
+  width: 70%;
+  height: 100px;
+  color:rgb(0,178,111);
+  top: 30px;
+  left:40px;
+  font-size: 80px;
+  font-weight: bolder;
+}
+.illness4{
+  width: 30%;
+  height: 100px;
+  color:rgb(0,178,111);
+  top: 50px;
+  font-size: 80px;
+  font-weight: bolder;
+}
+.tmp2{
+  width: 100%;
+  height:200px;
+  margin:20px 30px 20px 30px;
+  border-radius: 40px;
+  background-color:rgb(219, 255, 230);
+}
+</style>
