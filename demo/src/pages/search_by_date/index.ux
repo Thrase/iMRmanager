@@ -1,0 +1,140 @@
+<template>
+  <div>
+    <div class="search-by-date-page">
+      <text class="top" ontouchend="route_page_back" value="←查看病历-日期"></text>
+    </div>
+    <list class="list">
+      <list-item for="{{list1}}">
+        <div class="block">
+          <list class="bar">
+            <list-item class="ball"></list-item>
+            <list-item class="line"></list-item>
+          </list>
+          <list class="tmp">
+              <list-item>
+                <div class="start">
+                  <text class="start-font" value="{{times[$item]}}"></text>
+                </div>
+              </list-item>
+              <list-item>
+                <div if="{{period[$item]}}" class="sec">
+                  <text class="sec-font" value="{{names[$item]}}"></text>
+                </div>
+                <div else class="sec2">
+                  <text class="sec-font2" value="{{names[$item]}}"></text>
+                </div>
+              </list-item>
+          </list>    
+        </div>
+      </list-item>
+   </list>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+export default{
+  private: {
+    list1:[0,1,2,3,4,5],
+    names:{0:'糖尿病',1:'发烧',2:'鼻炎',3:'呼吸道感染',4:'胃炎',5:'哮喘'},
+    period:{0:1,1:0,2:1,3:1,4:0,5:0},
+    times:{0:'2019.11',1:'2019.9',2:'2019.8',3:'2019.7',4:'2019.5',5:'2018.12'}, 
+  },
+  route_page_back(){
+    router.back()
+  },
+  onInit() {
+    this.$page.setTitleBar({text: '查看病历-日期'})
+  },
+}
+</script>
+
+<style>
+.start{
+  width: 100%;
+  color: rgb(0, 178, 111);
+  height: 60px;
+  left: 60px;
+  font-size: 50px;
+}
+.start-font{
+  color: rgb(0, 178, 111);
+  font-size: 50px;
+}
+.sec{
+  width: 600px;
+  background-color: rgb(0, 178, 111);
+  border-radius: 30px;
+  height: 240px;
+  left: 40px;
+  color: #FFFFFF;
+  font-size: 80px;
+  margin-top: 20px;
+}
+.sec-font{
+  left:40px;
+  color: #FFFFFF;
+  font-size: 80px;
+  font-weight: bolder;
+}
+.sec2{
+  width: 600px;
+  background-color: rgb(219, 255, 230);
+  border-radius: 30px;
+  height: 240px;
+  left: 40px;
+  color: rgb(0, 178, 111);
+  font-size: 80px;
+  margin-top: 20px;
+}
+.sec-font2{
+  left:40px;
+  color: rgb(0, 178, 111);
+  font-size: 80px;
+  font-weight: bolder;
+}
+.top{
+  width: 100%;
+  background-color: #FFFFFF;
+  color: rgb(0, 178, 111);
+  font-size:50px;
+  font-weight: bolder;
+  margin-left: 20px;
+  margin-top: 10px;
+  height: 60px;
+}
+.list{
+  top:90px;
+  width:100%;
+  background-color: #FFFFFF;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+.block{
+  width: 100%;
+  height: 350px;
+}
+.bar{
+  left: 20px;
+  width:60px;
+  height: 350px; 
+}
+.ball{
+  width: 60px;
+  height: 60px;
+  background-color:rgb(0, 178, 111);
+  border-radius: 30px; 
+}
+.line{
+  width: 20px;
+  height: 250px;
+  margin: 10px 0px 0px 20px;
+  background-color:rgb(219, 255, 230);
+  border-radius: 20px;
+}
+.tmp{
+  width: 92%;
+  height: 350px;
+}
+</style>
