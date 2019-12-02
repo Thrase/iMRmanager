@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="search-by-date-page">
-      <text class="top" ontouchend="route_page_back" value="←查看病历-日期"></text>
+      <text class="top" ontouchend="route_page_back" value="⇦  查看病历-日期"></text>
     </div>
     <list class="list">
       <list-item for="{{list1}}">
@@ -58,6 +58,7 @@ export default{
   font-size: 50px;
 }
 .start-font{
+  font-family: '微软雅黑';
   color: rgb(0, 178, 111);
   font-size: 50px;
 }
@@ -72,6 +73,7 @@ export default{
   margin-top: 20px;
 }
 .sec-font{
+  font-family: '微软雅黑';
   left:40px;
   color: #FFFFFF;
   font-size: 80px;
@@ -88,12 +90,14 @@ export default{
   margin-top: 20px;
 }
 .sec-font2{
+  font-family: '微软雅黑';
   left:40px;
   color: rgb(0, 178, 111);
   font-size: 80px;
   font-weight: bolder;
 }
 .top{
+  font-family: '微软雅黑';
   width: 100%;
   background-color: #FFFFFF;
   color: rgb(0, 178, 111);

@@ -3,11 +3,11 @@
     <text class="title" ontouchend="route_page_back">⇦  查找病历</text>
 
     <div>
-      <image src="../../image/search-按照类别.png" class="btn" ontouchend="route_page_back"></image>
+      <image src="../../image/search-按照类别.png" class="btn" ontouchend="route_search_by_length"></image>
     </div>
 
     <div>
-      <image src="../../image/search-按照时间.png" class="btn" ontouchend="route_page_back"></image>
+      <image src="../../image/search-按照时间.png" class="btn" ontouchend="route_search_by_date"></image>
     </div>
   </div>
 </template>
@@ -21,6 +21,16 @@ export default {
   },
   route_page_back(){
     router.back()
+  },
+  route_search_by_length(){
+    router.push({
+      uri :'pages/search_by_length'
+    })
+  },
+  route_search_by_date(){
+    router.push({
+      uri :'pages/search_by_date'
+    })
   }
 }
 </script>

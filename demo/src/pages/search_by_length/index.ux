@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="search-by-type-page">
-      <text class="top" ontouchend="route_page_back" value="←查看病历-类别"></text>
+      <text class="top" ontouchend="route_page_back" value="⇦  查看病历-类别"></text>
     </div>
     <list class="list">
       <list-item>
@@ -42,6 +42,7 @@ export default{
 
 <style>
 .top{
+  font-family: '微软雅黑';
   width: 100%;
   background-color: #FFFFFF;
   color: rgb(0, 178, 111);
@@ -60,6 +61,7 @@ export default{
   align-items: center;
 }
 .type{
+  font-family: '微软雅黑';
   width: 100%;
   font-size: 40px;
   font-weight: bolder;
@@ -78,6 +80,7 @@ export default{
   color:rgb(255,255,255);
 }
 .illness1{
+  font-family: '微软雅黑';
   width: 70%;
   height: 100px;
   color:#FFFFFF;
@@ -87,6 +90,7 @@ export default{
   font-weight: bolder;
 }
 .illness2{
+  font-family: '微软雅黑';
   width: 30%;
   height: 100px;
   color:#FFFFFF;
@@ -95,6 +99,7 @@ export default{
   font-weight: bolder;
 }
 .illness3{
+  font-family: '微软雅黑';
   width: 70%;
   height: 100px;
   color:rgb(0,178,111);
@@ -104,6 +109,7 @@ export default{
   font-weight: bolder;
 }
 .illness4{
+  font-family: '微软雅黑';
   width: 30%;
   height: 100px;
   color:rgb(0,178,111);

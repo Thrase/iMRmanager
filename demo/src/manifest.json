@@ -47,6 +47,12 @@
       },
       "pages/medicine": {
         "component": "index"
+      },
+      "pages/search_by_length": {
+        "component": "index"
+      },
+      "pages/search_by_date": {
+        "component": "index"
       }
     },
     "widgets": {
