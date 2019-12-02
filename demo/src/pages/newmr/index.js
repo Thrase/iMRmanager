@@ -87,7 +87,26 @@ function data_process(result) {
 
 //上传OCR识别结果到后端
 function save_upload() {
-  message('提示', '病历保存成功！')
+  fetch.fetch({
+    url: 'http://47.101.159.58:9001/api/mr/new',
+    //url: 'http://192.168.43.114/api/mr/new',
+    method: 'POST',
+    data: {
+      'user_id': 1,
+      'hospital': page.table2,
+      'illness': page.table4,
+    },
+    success: function (data) {
+      fetch.fetch({
+        url: 'http://192.168.43.114',
+        method: 'POST',
+        data: data.data,
+      })
+      //let dict = JSON.parse(data.data)
+      message('上传成功', '服务器返回' + data.data)
+    },
+    fail: function () { message('错误', '上传服务器失败') }
+  })
 }
 
 /*其他辅助函数*/
