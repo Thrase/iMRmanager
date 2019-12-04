@@ -57,10 +57,13 @@ export default{
 </script>
 
 <style>
+midicine-page{
+  background-color:rgb(242, 252, 242);
+}
 .top{
   width: 100%;
   background-color: #FFFFFF;
-  color: rgb(0, 178, 111);
+  color: rgb(120,226,163);
   font-size:50px;
   font-weight: bolder;
   margin-left: 20px;
@@ -74,7 +77,7 @@ export default{
 .list{
   top:90px;
   width:100%;
-  background-color: #FFFFFF;
+  background-color: rgb(242, 252, 242);
   position: fixed;
   justify-content: center;
   align-items: center;
@@ -87,20 +90,20 @@ export default{
   color:#FFFFFF;
   font-size: 40px;
   font-weight: bolder;
-  background-color: rgb(0,178,111);
+  background-color: rgb(120,226,163);
 }
 .thing{
   width: 100%;
   height:480px;
   margin:10px 30px 10px 30px;
-  background-color: rgb(58, 218, 156);
+  background-color: rgb(120,226,163);
   border-radius: 43px;
 }
 .thing-title{
   width:100%;
   height: 80px;
   margin:30px 30px 10px 20px;
-  background-color: rgba(5, 196, 123, 0.5);
+  background-color: rgba(5, 196, 123, 0.185);
   border-radius: 43px;
 }
 .tilte-font{
@@ -112,7 +115,7 @@ export default{
 .thing-thins{
   width:100%;
   margin: 30px 30px 0px 20px;
-  background-color: rgba(5, 196, 123, 0.5);
+  background-color: rgba(5, 196, 123, 0.185);
   border-radius:43px;
 }
 .thins-oneline{
@@ -143,7 +146,7 @@ export default{
   height: 90px;
   top:0px;
   left:70px;
-  color:rgb(0, 178, 111);
+  color:rgb(120,226,163);
   font-family: '微软雅黑';
   font-size: 45px;
   font-weight: bold;
