@@ -4,7 +4,10 @@
 */
 import util from './util'
 
+let userid = ''
+
 export default {
+  private: { userid },
   showMenu: util.showMenu,
   createShortcut: util.createShortcut
 }
