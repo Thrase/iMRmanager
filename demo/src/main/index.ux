@@ -1,48 +1,77 @@
 <template>
-  <div class="demo-page">
-    <!-- <text class="title">登录界面</text> -->
-    <input class="btn" type="button" value="注册" ontouchend="signup"/>
-    <input class="btn" type="button" value="主界面入口" ontouchend="login" />
+  <div id="page" onappear="pass_this(this)">
+    <image src="../Common/logo.png"></image>
+    <text id="title">小康-智能病历管家</text>
+    <div class="input">
+      <text>手机号</text>
+      <input type="tel" onchange="update_phone"></input>
+    </div>
+    <div class="input">
+      <text>密码</text>
+      <input type="password" onchange="update_passwd"></input>
+    </div>
+    <div class="btn">
+      <input type="button" value="登录（调试中，直接进入主界面）" ontouchend="login"></input>
+      <input type="button" value="没有账号？立刻注册" ontouchend="register"></input>
+    </div>
   </div>
 </template>
 
-<script>
-import router from '@system.router'
-
-export default {
-  login() {
-    router.push({
-      uri: '/pages'
-    })
-  },
-  signup(){
-    router.push({
-      uri :'/pages/register'
-    })
-  }
-}
-</script>
+<script src="../main/index.js"></script>
 
 <style>
-.demo-page {
+image {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 20px;
+}
+
+#title {
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-family: "微软雅黑";
+  margin-bottom: 120px;
+}
+
+#page {
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgb(242, 252, 242);
 }
 
-.title {
-  font-size: 40px;
-  text-align: center;
+.input {
+  width: 80%;
+  flex-direction: column;
+}
+
+.input text {
+  color: rgb(0, 178, 111);
+  font-size: 30px;
+  font-family: "微软雅黑";
+  text-align: left;
+}
+
+.input input {
+  height: 75px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: rgb(255, 255, 255);
 }
 
 .btn {
-  width: 550px;
-  height: 86px;
-  margin-top: 40px;
-  border-radius: 43px;
-  background-color: rgb(120,226,163);
+  height: 300px;
+  margin-top: 70px;
+  flex-direction: column;
+}
+
+.btn input {
+  margin-top: 50px;
+  width: 560px;
+  height: 90px;
+  border-radius: 60px;
   font-size: 30px;
-  color: #ffffff;
+  color: rgb(255, 255, 255);
+  background-color: rgb(120, 226, 163);
 }
 </style>

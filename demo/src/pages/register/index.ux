@@ -16,7 +16,7 @@
     </div>
     <div class="btn">
       <input if="{{ontimecount}}" id="ontimecount" type="button" value="{{checkstatus}}"></input>
-      <input else type="button" value="获取验证码"  ontouchend="get_checkcode"></input>
+      <input else type="button" value="获取验证码" ontouchend="get_checkcode"></input>
       <input type="button" value="注册" ontouchend="register"></input>
     </div>
   </div>
@@ -68,12 +68,13 @@ image {
   margin: 60px 30px 10px 30px;
   width: 260px;
   height: 80px;
-  border-radius: 30px;
-  background-color: rgb(120, 226, 163);
+  border-radius: 50px;
   font-size: 30px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(120, 226, 163);
 }
 
-#ontimecount{
+#ontimecount {
   background-color: rgb(179, 179, 179);
 }
 </style>
