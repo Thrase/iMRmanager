@@ -1,31 +1,43 @@
 <template>
   <div id="page" onappear="pass_this(this)">
-    <div class="outtype">
-      <text class="notice">手机号:</text>
-      <input type="text" class="typein" maxlength=11></input>
+    <image src="../../Common/logo.png"></image>
+    <text id="title">小康-智能病历管家</text>
+    <div class="input">
+      <text>注册手机号</text>
+      <input type="tel" onchange="update_phone"></input>
     </div>
-    <div class="line">
-      <div class="leftline"></div>
-      <div class="rightline"></div>
+    <div class="input">
+      <text>设置密码</text>
+      <input type="password" onchange="update_passwd"></input>
     </div>
-    <div style="width:100%; height:70px;"></div>
-    <div class="outtype">
-      <text value="验证码:" class="notice"></text>
-      <input type="text" class="typein2" maxlength=6></input>
-      <input type="button" class="got" value="发送"></button>
+    <div class="input">
+      <text>短信验证码</text>
+      <input type="number" onchange="update_checkcode"></input>
     </div>
-    <div class="line">
-      <div class="leftline"></div>
-      <div class="rightline2"></div>
+    <div class="btn">
+      <input if="{{ontimecount}}" id="ontimecount" type="button" value="{{checkstatus}}"></input>
+      <input else type="button" value="获取验证码"  ontouchend="get_checkcode"></input>
+      <input type="button" value="注册" ontouchend="register"></input>
     </div>
-    <div style="width:100%; height:70px;"></div>
-    <input class="btn" type="button" value="确认" ontouchend="signup" onclick="routePage" />
   </div>
 </template>
 
 <script src="../register/index.js"></script>
 
 <style>
+image {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 20px;
+}
+
+#title {
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-family: "微软雅黑";
+  margin-bottom: 160px;
+}
+
 #page {
   flex-direction: column;
   justify-content: center;
@@ -33,85 +45,35 @@
   background-color: rgb(242, 252, 242);
 }
 
-.top {
-  width: 100%;
-  height: 70px;
-  background-color: rgb(242, 252, 242);
-  color: rgb(0, 178, 111);
-  font-size: 50px;
-  font-weight: bolder;
-  margin-left: 20px;
-  margin-top: 10px;
-  height: 60px;
-}
-
-.title {
-  font-size: 40px;
-  text-align: center;
-}
-.outtype {
-  width: 90%;
-  height: 80px;
-}
-.notice {
-  width: 40%;
-  font-size: 70px;
-  font-weight: bolder;
-  color: rgb(0, 178, 111);
-}
-.typein {
-  width: 60%;
-  font-size: 60px;
-  font-weight: bolder;
-  color: rgb(0, 178, 111);
-}
-.typein2 {
-  width: 32%;
-  font-size: 60px;
-  font-weight: bolder;
-  color: rgb(0, 178, 111);
-}
-.got {
-  width: 25%;
-  background-color: rgb(0, 178, 111);
-  border-radius: 43px;
-  font-size: 30px;
-  color: #ffffff;
-}
-.line {
+.input {
   width: 80%;
-  height: 5px;
-}
-.leftline {
-  width: 40%;
-}
-.rightline {
-  width: 60%;
-  height: 5px;
-  background-color: rgb(0, 63, 39);
-}
-.rightline2 {
-  width: 32%;
-  height: 5px;
-  background-color: rgb(0, 63, 39);
+  flex-direction: column;
 }
 
-.btn {
-  width: 550px;
-  height: 86px;
-  margin-top: 40px;
-  border-radius: 43px;
-  background-color: rgb(120, 226, 163);
+.input text {
+  color: rgb(0, 178, 111);
   font-size: 30px;
-  color: #ffffff;
+  font-family: "微软雅黑";
+  text-align: left;
 }
-.btn2 {
-  width: 300px;
-  height: 86px;
-  margin-top: 40px;
-  border-radius: 43px;
+
+.input input {
+  height: 75px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+.btn input {
+  margin: 60px 30px 10px 30px;
+  width: 260px;
+  height: 80px;
+  border-radius: 30px;
   background-color: rgb(120, 226, 163);
   font-size: 30px;
-  color: #ffffff;
+}
+
+#ontimecount{
+  background-color: rgb(179, 179, 179);
 }
 </style>

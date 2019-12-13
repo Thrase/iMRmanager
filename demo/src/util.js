@@ -67,6 +67,7 @@ function createShortcut () {
 }
 
 export default {
+  user_id: '',
   showMenu,
   createShortcut
 }

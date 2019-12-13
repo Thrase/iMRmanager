@@ -10,6 +10,7 @@ import image from '@system.image'
 let page
 function pass_this(_this) { page = _this }
 
+
 //拍照，返回uri并进行OCR识别
 function take_photo() {
   media.takePhoto({
