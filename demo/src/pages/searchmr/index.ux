@@ -1,6 +1,6 @@
 <template>
   <div class="search-page">
-    <text class="title" ontouchend="route_page_back">⇦  查找病历</text>
+    <text class="title" ontouchend="route_page_back">⇦ 查找病历</text>
 
     <div>
       <image src="../../image/search-按照类别.png" class="btn" ontouchend="route_search_by_length"></image>
@@ -14,22 +14,24 @@
 
 <script>
 import router from '@system.router'
+import util from '../../util.js'
 
 export default {
   onInit() {
     // this.$page.setTitleBar({text: '小康-智能病历管家'})
   },
-  route_page_back(){
+  route_page_back() {
     router.back()
   },
-  route_search_by_length(){
+  route_search_by_length() {
     router.push({
-      uri :'pages/search_by_length'
+      uri: 'pages/search_by_illness'
     })
   },
-  route_search_by_date(){
+  route_search_by_date() {
+    util.illness = ''
     router.push({
-      uri :'pages/search_by_date'
+      uri: 'pages/search_by_time'
     })
   }
 }
@@ -37,13 +39,12 @@ export default {
 
 <style>
 .title {
-  color:rgb(0, 178, 111);
-  font-family: '微软雅黑';
+  color: rgb(0, 178, 111);
+  font-family: "微软雅黑";
   font-size: 45px;
   margin: 40px 400px 30px 10px;
   font-weight: bold;
 }
-
 
 .search-page {
   flex-direction: column;
@@ -60,7 +61,5 @@ export default {
   /* position: fixed; */
   margin: 0 0 0 0px;
   /* border-radius: 3px; */
- 
 }
-
 </style>

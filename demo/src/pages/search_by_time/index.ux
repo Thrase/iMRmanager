@@ -1,0 +1,115 @@
+<template>
+  <div id="page" onappear="pass_this(this); get_mr_by_date()">
+    <text id="title" ontouchend="route_page_back">⇦  查看病历-日期</text>
+    <div id="item" for="{{list}}">
+      <div id="edgeline">
+        <div id="circle"></div>
+        <div id="line"></div>
+      </div>
+      <div if="{{$item.type}}" id="long-term" ontouchend="route_mr_detail($item)">
+        <text class="time">{{$item.time}}</text>
+        <text class="illness">{{$item.illness}}</text>
+      </div>
+      <div else id="short-term"  ontouchend="route_mr_detail($item)">
+        <text class="time">{{$item.time}}</text>
+        <text class="illness">{{$item.illness}}</text>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="../search_by_time/index.js"></script>
+
+<style>
+#page {
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(242, 252, 242);
+}
+
+#title {
+  margin: 40px 300px 30px 0px;
+  color: rgb(0, 178, 111);
+  font-family: "微软雅黑";
+  font-size: 45px;
+  font-weight: bold;
+}
+
+#item {
+  width: 90%;
+}
+
+#edgeline {
+  margin-left: 10px;
+  margin-right: 25px;
+  padding-top: 10px;
+  flex-direction: column;
+}
+
+#circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: rgb(0, 178, 111);
+}
+
+#line {
+  width: 10px;
+  height: 120px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: rgb(212, 255, 208);
+}
+
+#long-term {
+  width: 85%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 60px;
+  flex-direction: column;
+  background-color: rgb(0, 178, 111);
+}
+
+#short-term {
+  width: 85%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 60px;
+  flex-direction: column;
+  background-color: rgb(212, 255, 208);
+}
+
+.time {
+  font-size: 32px;
+  font-family: "微软雅黑";
+  text-align: left;
+}
+
+.illness {
+  font-size: 48px;
+  font-family: "微软雅黑";
+  text-align: left;
+}
+
+#long-term .time {
+  color: rgb(255, 255, 255);
+}
+
+#short-term .time {
+  color: rgb(0, 178, 111);
+}
+
+#long-term .illness {
+  color: rgb(255, 255, 255);
+}
+
+#short-term .illness {
+  color: rgb(0, 178, 111);
+}
+</style>

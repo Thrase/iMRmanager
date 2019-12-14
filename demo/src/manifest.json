@@ -34,10 +34,10 @@
       "pages": {
         "component": "index"
       },
-      "pages/search_by_date": {
+      "pages/search_by_time": {
         "component": "index"
       },
-      "pages/search_by_length": {
+      "pages/search_by_illness": {
         "component": "index"
       },
       "pages/date": {
@@ -81,10 +81,10 @@
       "main": {
         "menu": false
       },
-      "pages/search_by_date": {},
-      "pages/search_by_length": {},
+      "pages/search_by_time": {},
+      "pages/search_by_illness": {},
       "pages/date": {},
-      "pages/Medicine": {},
+      "pages/medicine": {},
       "pages/advice": {},
       "pages/newmr": {},
       "pages/searchmr": {},
