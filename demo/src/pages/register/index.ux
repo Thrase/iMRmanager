@@ -61,7 +61,8 @@ image {
   height: 75px;
   margin-top: 10px;
   margin-bottom: 20px;
-  background-color: rgb(255, 255, 255);
+   border-bottom: 3px solid rgb(120, 226, 163);
+  background-color: rgb(251, 255, 251);
 }
 
 .btn input {

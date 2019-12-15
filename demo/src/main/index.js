@@ -11,7 +11,7 @@ function login() {
 
 //用户注册
 function register() {
-  router.push({ uri: '/pages/register' })
+  router.push({ uri: '/pages/register2' })
 }
 
 

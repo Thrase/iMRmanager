@@ -55,7 +55,13 @@
       "pages/register": {
         "component": "index"
       },
+      "pages/register2": {
+        "component": "index"
+      },
       "pages/advice": {
+        "component": "index"
+      },
+      "pages/viewmr": {
         "component": "index"
       }
     },

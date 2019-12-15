@@ -1,0 +1,124 @@
+<template>
+  <div id="page" onappear="pass_this(this); get_mr_detail()">
+    <text id="result">⇦  病历内容</text>
+    <div id="list">
+      <div>
+        <text class="key">病症</text>
+        <textarea class="value">{{table4}}</textarea>
+      </div>
+      <div>
+        <text class="key">时间</text>
+        <textarea class="value">{{table1}}</textarea>
+      </div>
+      <div>
+        <text class="key">医院</text>
+        <textarea class="value">{{table2}}</textarea>
+      </div>
+      <div>
+        <text class="key" style="height: 140px">处理及意见</text>
+        <textarea class="value" style="height: 140px">{{table5}}</textarea>
+      </div>
+      <div>
+        <text class="key" style="height: 140px">医嘱与用药</text>
+        <textarea class="value" style="height: 140px">{{table3}}</textarea>
+      </div>
+    </div>
+    <div id="button">
+      <input id="save" type="button" value="保存病历" ontouchend="save_upload" />
+    </div>
+  </div>
+</template>
+
+<script src="../newmr/index.js"></script>
+
+<style>
+#page {
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(242, 252, 242);
+}
+
+#title {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  margin-left: -470px;
+  color: rgb(0, 178, 111);
+  font-family: "微软雅黑";
+  font-size: 45px;
+  font-weight: bold;
+}
+
+#image {
+  width: 90%;
+  height: 400px;
+  border: 3px solid rgb(0, 178, 111);
+  border-radius: 10px;
+}
+
+#progress {
+  margin-top: 20px;
+  color:  rgb(0, 178, 111);
+  font-size: 30px;
+}
+
+#result {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  margin-left: -470px;
+  color: rgb(0, 178, 111);
+  font-family: "微软雅黑";
+  font-size: 45px;
+  font-weight: bold;
+}
+
+#list {
+  width: 90%;
+  height: 800px;
+  flex-direction: column;
+}
+
+.key {
+  width: 35%;
+  height: 70px;
+  background-color: rgb(212, 255, 208);
+  text-align: center;
+  font-size: 30px;
+}
+
+.value {
+  width: 65%;
+  height: 70px;
+  padding-top: 15px;
+  border-bottom: 3px solid rgb(120, 226, 163);
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 30px;
+}
+
+#button {
+  height: 100px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  flex-direction: row;
+}
+
+#save {
+  width: 200px;
+  height: 80px;
+  margin-right: 20px;
+  border-radius: 20px;
+  background-color: rgb(120, 226, 163);
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+}
+
+#retake {
+  width: 200px;
+  height: 80px;
+  margin-left: 20px;
+  border-radius: 20px;
+  background-color: rgb(223, 223, 223);
+  color: rgb(248, 248, 248);
+  font-size: 30px;
+}
+</style>
