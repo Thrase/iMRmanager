@@ -1,6 +1,5 @@
 import router from '@system.router'
 import fetch from '@system.fetch'
-import prompt from '@system.prompt'
 import util from '../../util'
 
 let page
@@ -11,6 +10,7 @@ function pass_this(_this) { page = _this }
 function get_mr_by_date() {
   fetch.fetch({
     //url: 'http://47.101.159.58:9001/api/mr/category',
+    //debug
     url: 'http://192.168.1.101/api/mr/category',
     data: { 'user_id': util.user_id, 'illness': util.illness },
     method: 'GET',

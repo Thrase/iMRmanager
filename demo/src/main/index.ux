@@ -11,8 +11,8 @@
       <input type="password" onchange="update_passwd"></input>
     </div>
     <div class="btn">
-      <input type="button" value="登录（调试中，直接进入主界面）" ontouchend="login"></input>
-      <input type="button" value="没有账号？立刻注册" ontouchend="register"></input>
+      <input type="button" value="登录" ontouchend="login"></input>
+      <input type="button" value="注册" ontouchend="register"></input>
     </div>
   </div>
 </template>

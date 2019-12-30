@@ -40,9 +40,6 @@
       "pages/search_by_illness": {
         "component": "index"
       },
-      "pages/date": {
-        "component": "index"
-      },
       "pages/medicine": {
         "component": "index"
       },

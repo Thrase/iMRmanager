@@ -1,5 +1,5 @@
 <template>
-  <div id="page" onappear="pass_this(this); get_mr_detail()">
+  <div id="page">
     <text id="result">⇦  病历内容</text>
     <div id="list">
       <div>
@@ -24,12 +24,10 @@
       </div>
     </div>
     <div id="button">
-      <input id="save" type="button" value="保存病历" ontouchend="save_upload" />
+      <input id="save" type="button" value="保存病历"/>
     </div>
   </div>
 </template>
-
-<script src="../newmr/index.js"></script>
 
 <style>
 #page {

@@ -6,7 +6,6 @@ import router from '@system.router'
 import image from '@system.image'
 
 
-//垃圾Quick App IDE，采用严格模式，函数里不能用this，只能这样传
 let page
 function pass_this(_this) { page = _this }
 
@@ -24,8 +23,6 @@ function take_photo() {
           page.image_uri = compressed_data.uri
           page.progress = '图片读取中'
           file.readArrayBuffer({
-            //debug
-            //uri: '/ocr/test_image.jpg',
             uri: compressed_data.uri,
             success: function (file_data) {
               request_ocr(uint8arr_to_base64(file_data.buffer))
@@ -47,18 +44,15 @@ function request_ocr(image_base64) {
   //获取百度OCR的token
   fetch.fetch({
     url: 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=yCffU9iNxneXAN3vfuUM2eVC&client_secret=4Go0y8s1ZUOu4ylysmGKgAt0vixaT2fY',
-    //token获取成功，回调请求OCR识别结果函数，JS的回调函数令人窒息
+    //token获取成功，回调请求OCR识别结果函数
     success: function (token_data) {
       page.progress = 'OCR识别中'
       let token = JSON.parse(token_data.data).access_token
       fetch.fetch({
-        //url: 'http://192.168.1.101?access_token=' + token,
         url: 'https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic?access_token=' + token,
         method: 'POST',
         data: {
           'image': image_base64
-          //debug
-          //'url': 'http://n.sinaimg.cn/gx/crawl/151/w550h401/20190412/xIlY-hvntnkr1690229.jpg'
         },
         //OCR识别完成，回调处理识别数据的函数
         success: function (result_data) {
@@ -73,7 +67,7 @@ function request_ocr(image_base64) {
   })
 }
 
-//处理OCR识别结果
+//处理OCR识别结果(暂定)
 function data_process(result) {
   for (let i = 0; i < result.length; i++) {
     if (result[i].words.indexOf('时间') != -1) { page.table1 += result[i].words }
@@ -90,6 +84,7 @@ function data_process(result) {
 function save_upload() {
   fetch.fetch({
     url: 'http://47.101.159.58:9001/api/mr/new',
+    //debug
     //url: 'http://192.168.43.114/api/mr/new',
     method: 'POST',
     data: {
